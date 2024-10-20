@@ -76,8 +76,7 @@ def execute_pipeline(session: Session, account_id: str) -> None:
     if not pipeline_is_running(session, name):
         logger.info("Executing pipeline - " + name)
         response = client.start_pipeline_execution(name=name)
-        sanitized_response = utils.sanitize_input_for_logging(response)
-        logger.info(sanitized_response)
+        logger.info(response)
     else:
         logger.info("Pipeline is currently running")
 

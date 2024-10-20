@@ -112,8 +112,7 @@ def put_audit_record(
     item["ddb_event_name"] = {"S": event_name}
     logger.info("Inserting item into " + table + " table: " + str(item))
     response = dynamodb.put_item(TableName=table, Item=item)
-    sanitized_response = utils.sanitize_input_for_logging(response)
-    logger.info(sanitized_response)
+    logger.info(response)
     return response
 
 
@@ -211,8 +210,7 @@ def create_new_account(
         ),
         ProvisionToken=str(uuid.uuid1()),
     )
-    sanitized_response = utils.sanitize_input_for_logging(response)
-    logger.info(sanitized_response)
+    logger.info(response)
     return response
 
 
